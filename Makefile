@@ -1,7 +1,7 @@
 # DevOps Complexity Build
 
 .PHONY: all
-all : srccomplexity
+all : srccomplexity srcMLXPathCountTest
 
 srccomplexity : srcComplexity.o srcMLXPathCount.o
 	g++ srcComplexity.o srcMLXPathCount.o -lxml2 -o srccomplexity
@@ -12,6 +12,12 @@ srcComplexity.o : srcComplexity.cpp srcMLXPathCount.hpp
 srcMLXPathCount.o : srcMLXPathCount.cpp srcMLXPathCount.hpp
 	g++ -c -I/usr/include/libxml2 srcMLXPathCount.cpp
 
+srcMLXPathCountTest : srcMLXPathCountTest.o srcMLXPathCount.o
+	g++ srcMLXPathCountTest.o srcMLXPathCount.o -lxml2 -o srcMLXPathCountTest
+
+srcMLXPathCountTest.o : srcMLXPathCountTest.cpp srcMLXPathCount.hpp
+	g++ -c srcMLXPathCountTest.cpp
+
 .PHONY: clean
 clean :
-	rm -f srcComplexity.o srcMLXPathCount.o srccomplexity
+	rm -f srcComplexity.o srcMLXPathCount.o srccomplexity srcMLXPathCountTest.o srcMLXPathCountTest
