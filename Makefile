@@ -8,3 +8,7 @@ srcComplexity.o : srcComplexity.cpp srcMLXPathCount.hpp
 
 srcMLXPathCount.o : srcMLXPathCount.cpp srcMLXPathCount.hpp
 	g++ -c -I/usr/include/libxml2 srcMLXPathCount.cpp
+
+.PHONY: clean
+clean :
+	rm -f srcComplexity.o srcMLXPathCount.o srccomplexity
