@@ -1,9 +1,10 @@
 # DevOps Complexity Build
 
 OBJ := srcComplexity.o srcMLXPathCount.o srcMLXPathCountTest.o
+EXE := srccomplexity srcMLXPathCountTest
 
 .PHONY: all
-all : srccomplexity srcMLXPathCountTest
+all : $(EXE)
 
 srccomplexity : srcComplexity.o srcMLXPathCount.o
 	g++ $^ -lxml2 -o $@
@@ -22,4 +23,4 @@ srcMLXPathCountTest.o : srcMLXPathCountTest.cpp srcMLXPathCount.hpp
 
 .PHONY: clean
 clean :
-	rm -f $(OBJ) srccomplexity srcMLXPathCountTest
+	rm -f $(OBJ) $(EXE)
